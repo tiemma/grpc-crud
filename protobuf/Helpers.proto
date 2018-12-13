@@ -1,0 +1,16 @@
+
+syntax = "proto3";
+
+message UUID{
+    string id = 1;
+}
+
+message Timestamp{
+    string timeStamp = 1;
+}
+
+enum UserStatus{
+    DEFAULT=0;
+    EDITOR=1;
+    ADMIN=2;
+}

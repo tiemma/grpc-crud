@@ -1,34 +1,26 @@
-syntax =  "proto3";
-
-message UUID{
-    string id = 1;
-}
-
-message Timestamp{
-    string timeStamp = 1;
-}
+syntax = "proto3";
+import "Helpers.proto";
 
 message User{
     string name = 1;
     string email = 2;
-    UUID userId= 3;
-    string token=4;
-    enum UserStatus{
-        DEFAULT=0;
-        EDITOR=1;
-        ADMIN=2;
+    oneof optional_password {
+        string password = 3;
     }
-    UserStatus userStatus = 5;
-    Timestamp createdAt = 6;
-    Timestamp updatedAt = 7;
-    bool isVerified = 8;
 }
 
-message Comment{
-    UUID id = 1;
-    string header = 2;
-    string content = 3;
-    int64 user = 4;
-    Timestamp createdAt = 6;
-    Timestamp updatedAt = 7;
+message UserResponse{
+    User user = 1;
+    UserStatus userStatus = 2;
+    UUID userId= 3;
+    string token=4;
+    Timestamp createdAt = 5;
+    Timestamp updatedAt = 6;
+    bool isVerified = 7;
 }
+
+service CreateUserService{
+    rpc CreateUser(User) returns (UserResponse);
+}
+
+

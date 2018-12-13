@@ -6,6 +6,8 @@ name = "pypi"
 [dev-packages]
 
 [packages]
+grpcio = "*"
+grpcio-tools = "*"
 
 [requires]
 python_version = "3.5"

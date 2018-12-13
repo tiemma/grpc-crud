@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+import "Helpers.proto";
+
+message Comment{
+    UUID userId = 1;
+    string header = 2;
+    string content = 3;
+}
+
+message CommentResponse{
+    UUID id = 1;
+    Comment comment = 2;
+    Timestamp created_at = 3;
+    Timestamp updated_at = 4;
+}
+
+service CreateComment{
+    rpc CreateComment(Comment) returns (CommentResponse);
+}
