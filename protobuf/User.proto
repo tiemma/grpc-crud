@@ -1,0 +1,34 @@
+syntax =  "proto3";
+
+message UUID{
+    string id = 1;
+}
+
+message Timestamp{
+    string timeStamp = 1;
+}
+
+message User{
+    string name = 1;
+    string email = 2;
+    UUID userId= 3;
+    string token=4;
+    enum UserStatus{
+        DEFAULT=0;
+        EDITOR=1;
+        ADMIN=2;
+    }
+    UserStatus userStatus = 5;
+    Timestamp createdAt = 6;
+    Timestamp updatedAt = 7;
+    bool isVerified = 8;
+}
+
+message Comment{
+    UUID id = 1;
+    string header = 2;
+    string content = 3;
+    int64 user = 4;
+    Timestamp createdAt = 6;
+    Timestamp updatedAt = 7;
+}
