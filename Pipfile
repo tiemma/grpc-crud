@@ -8,6 +8,7 @@ name = "pypi"
 [packages]
 grpcio = "*"
 grpcio-tools = "*"
+pylint = "*"
 
 [requires]
 python_version = "3.5"
