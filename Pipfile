@@ -9,6 +9,7 @@ name = "pypi"
 grpcio = "*"
 grpcio-tools = "*"
 pylint = "*"
+bcrypt = "*"
 
 [requires]
 python_version = "3.5"
