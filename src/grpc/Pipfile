@@ -4,12 +4,13 @@ verify_ssl = true
 name = "pypi"
 
 [dev-packages]
+pylint = "*"
 
 [packages]
 grpcio = "*"
 grpcio-tools = "*"
-pylint = "*"
 bcrypt = "*"
+protobuf-deps = "*"
 
 [requires]
 python_version = "3.5"

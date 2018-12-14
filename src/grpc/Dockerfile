@@ -1,15 +1,29 @@
-FROM python3:alpine
+FROM python:3.5-alpine
 
 ENV HOST 0.0.0.0
 
 ENV PORT 50010
 
-ADD cert helpers proto server __init__.py app/
-
-WORKDIR app/
+RUN pwd
 
 RUN pip3 install pipenv
 
-RUN pipenv install
+ADD __init__.py Pipfile server.py app/
 
-CMD ["pipenv", "run", "python3", "server/user/UserService.py"]
+ADD ../../deps/protobuf-deps/proto/cert  /cert
+
+ADD helpers/ app/helpers
+
+ADD ../../deps/protobuf-deps/proto app/proto
+
+ADD server/ app/server/
+
+WORKDIR app/
+
+RUN pipenv install --skip-lock
+
+RUN pwd
+
+RUN ls
+
+CMD ["pipenv", "run", "python3", "server.py"]
