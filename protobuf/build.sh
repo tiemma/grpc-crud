@@ -2,7 +2,7 @@
 
 exportProtobuf () {
 
-    DESTDIR=$(pwd)/../src/proto;
+    DESTDIR=$(pwd)/../deps/protobuf_deps/proto;
     mkdir -p $DESTDIR;
 
     PROTO_FILE=$(pwd)/*.proto
