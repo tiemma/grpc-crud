@@ -1,16 +1,13 @@
 from bcrypt import hashpw, gensalt
-from concurrent import futures
-from os.path import join, split, abspath
-from os import getenv
+
 from time import sleep
 from uuid import uuid1, uuid4
 
-from grpc import server as grpc_server, ssl_server_credentials
 
-from src.grpc.helpers import create_timestamp
-from src.grpc.proto.User_pb2_grpc import CreateUserServiceServicer, add_CreateUserServiceServicer_to_server
-from src.grpc.proto.User_pb2 import User, UserResponse
-from src.grpc.proto.Helpers_pb2 import Timestamp, UUID, UserStatus
+from proto.helpers import create_timestamp, create_user_service
+from proto.User_pb2_grpc import CreateUserServiceServicer
+from proto.User_pb2 import User, UserResponse
+from proto.Helpers_pb2 import Timestamp, UUID, UserStatus
 
 
 class UserService(CreateUserServiceServicer):
@@ -36,26 +33,11 @@ class UserService(CreateUserServiceServicer):
 
 
 def serve():
-    server = grpc_server(futures.ThreadPoolExecutor(max_workers=10))
-    add_CreateUserServiceServicer_to_server(UserService(), server)
-
-    # Path where certificate and key are defined
-    cert_path = abspath(split(__file__)[0] + "/../../cert")
 
     # Sleep time in seconds
-    _ONE_DAY_IN_SECONDS = 60 * 60 * 24
+    one_day_in_seconds = 60 * 60 * 24
 
-    with open(join(cert_path, 'server.key')) as f:
-        private_key = f.read().encode()
-
-    with open(join(cert_path, 'server.crt')) as f:
-        certificate_chain = f.read().encode()
-
-    server_creds = ssl_server_credentials(((private_key, certificate_chain,),))
-
-    server.add_secure_port(
-        '{HOST}:{PORT}'.format(HOST=getenv('HOST', 'localhost'), PORT=getenv('PORT', 50051)),
-        server_creds)
+    server = create_user_service(UserService())
 
     server.start()
 
@@ -63,10 +45,6 @@ def serve():
 
     try:
         while True:
-            sleep(_ONE_DAY_IN_SECONDS)
+            sleep(one_day_in_seconds)
     except KeyboardInterrupt:
         server.stop(0)
-
-
-if __name__ == "__main__":
-    serve()
