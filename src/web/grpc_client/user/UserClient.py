@@ -4,14 +4,15 @@ from sys import exit
 
 from grpc import ssl_channel_credentials, secure_channel, channel_ready_future, FutureTimeoutError, RpcError
 
-from src.grpc.proto.User_pb2_grpc import CreateUserServiceStub
-from src.grpc.proto.User_pb2 import User
+from helpers import get_cert_path
+from proto.User_pb2_grpc import CreateUserServiceStub
+from proto.User_pb2 import User
 
 
 def run():
 
     # Path where certificate and key are defined
-    cert_path = abspath(split(__file__)[0] + "/../../cert")
+    cert_path = get_cert_path()
 
     # read in certificate
     with open(join(cert_path, 'server.crt')) as f:

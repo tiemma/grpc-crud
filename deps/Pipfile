@@ -4,12 +4,9 @@ verify_ssl = true
 name = "pypi"
 
 [dev-packages]
+twine = "*"
 
 [packages]
-grpcio = "*"
-grpcio-tools = "*"
-pylint = "*"
-bcrypt = "*"
 
 [requires]
 python_version = "3.5"

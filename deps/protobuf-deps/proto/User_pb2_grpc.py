@@ -2,7 +2,7 @@
 
 import grpc
 
-import src.grpc.proto.User_pb2 as User__pb2
+import proto.User_pb2 as User__pb2
 
 
 class CreateUserServiceStub(object):
