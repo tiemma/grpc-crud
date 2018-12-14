@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[dev-packages]
+"autopep8" = "*"
+pylint = "*"
+
+[packages]
+grpcio = "*"
+grpcio-tools = "*"
+flask = "*"
+flask-restplus = "*"
+protobuf = "*"
+protobuf-deps = "*"
+
+[requires]
+python_version = "3.5"
