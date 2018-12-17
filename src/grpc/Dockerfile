@@ -10,11 +10,11 @@ RUN pip3 install pipenv
 
 ADD __init__.py Pipfile server.py app/
 
-ADD ../../deps/protobuf-deps/proto/cert  /cert
+ADD ../../deps/protobuf_deps  /cert
 
 ADD helpers/ app/helpers
 
-ADD ../../deps/protobuf-deps/proto app/proto
+ADD ../../deps/protobuf_deps app/proto
 
 ADD server/ app/server/
 

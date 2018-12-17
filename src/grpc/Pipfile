@@ -8,8 +8,8 @@ pylint = "*"
 
 [packages]
 grpcio = "*"
-grpcio-tools = "*"
 bcrypt = "*"
+logger-crud = "*"
 protobuf-deps = "*"
 
 [requires]
