@@ -5,11 +5,19 @@ Implementation for logger services
 
 from logging import handlers, Formatter, StreamHandler, getLogger, DEBUG
 
-from os import getcwd
-import sys
+from os import getcwd, makedirs
+from os.path import exists
+
+from sys import stdout
 
 FORMATTER = Formatter("%(asctime)s — %(name)s — %(levelname)s — %(message)s")
-LOG_FILE = "{current_working_dir}/logger/App.log".format(current_working_dir=getcwd())
+
+LOG_DIRECTORY = "{current_working_dir}/logs".format(current_working_dir=getcwd())
+
+LOG_FILE = "{log_directory}/App.log".format(log_directory=LOG_DIRECTORY)
+
+if not exists(LOG_DIRECTORY):
+    makedirs(LOG_DIRECTORY)
 
 # Create the file if it doesn't exist
 open(LOG_FILE, 'w+').close()
@@ -25,7 +33,7 @@ class Logger:
 
         :return:
         """
-        console_handler = StreamHandler(sys.stdout)
+        console_handler = StreamHandler(stdout)
         console_handler.setFormatter(FORMATTER)
         return console_handler
 
