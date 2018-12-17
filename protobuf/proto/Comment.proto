@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-import "protobuf/Helpers.proto";
+import "proto/Helpers.proto";
 
 message Comment{
     UUID userId = 1;

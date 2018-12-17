@@ -1,5 +1,5 @@
 syntax = "proto3";
-import "Helpers.proto";
+import "proto/Helpers.proto";
 
 message User{
     string name = 1;
