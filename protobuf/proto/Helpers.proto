@@ -1,6 +1,8 @@
 
 syntax = "proto3";
 
+package proto;
+
 message UUID{
     string id = 1;
 }

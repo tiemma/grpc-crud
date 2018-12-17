@@ -7,6 +7,8 @@ from proto.User_pb2_grpc import add_CreateUserServiceServicer_to_server
 
 from grpc import ssl_channel_credentials, secure_channel, server as grpc_server, ssl_server_credentials
 
+default_port = '50051'
+
 
 def create_timestamp():
     """
@@ -35,7 +37,7 @@ def create_channel():
     # create credentials
     credentials = ssl_channel_credentials(root_certificates=trusted_certs)
     return secure_channel(
-        '{HOST}:{PORT}'.format(HOST=getenv('HOST', 'localhost'), PORT=getenv('PORT', 50051)),
+        '{HOST}:{PORT}'.format(HOST=getenv('HOST', 'localhost'), PORT=getenv('PORT', default_port)),
         credentials)
 
 
@@ -55,7 +57,7 @@ def create_user_service(UserService):
     server_creds = ssl_server_credentials(((private_key, certificate_chain,),))
 
     server.add_secure_port(
-        '{HOST}:{PORT}'.format(HOST=getenv('HOST', 'localhost'), PORT=getenv('PORT', '50051')),
+        '{HOST}:{PORT}'.format(HOST=getenv('HOST', 'localhost'), PORT=getenv('PORT', default_port)),
         server_creds)
 
     return server

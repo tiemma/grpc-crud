@@ -1,5 +1,5 @@
 syntax = "proto3";
-import "protobuf/Helpers.proto";
+import "Helpers.proto";
 
 message User{
     string name = 1;
@@ -21,6 +21,11 @@ message UserResponse{
 
 service CreateUserService{
     rpc CreateUser(User) returns (UserResponse);
+}
+
+service FindUserService{
+    rpc FindUser(User) returns (UserResponse);
+    rpc FindUsers(User) returns (stream UserResponse);
 }
 
 
