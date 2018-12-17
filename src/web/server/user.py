@@ -3,8 +3,8 @@ from flask_restplus import Namespace, Resource, fields
 from flask_restplus._http import HTTPStatus
 
 from grpc_client.user.UserClient import create_user
-from logger import Logger
 
+from logger import Logger
 
 
 USER_NS = Namespace("users", "User related operations")
@@ -18,6 +18,7 @@ USER = USER_NS.model('User', {
 
 @USER_NS.route("/")
 @USER_NS.response(HTTPStatus.NOT_FOUND, 'User not found')
+@USER_NS.response(HTTPStatus.CREATED, 'User was created successfully')
 class User(Resource):
     """
     User resource class for defining USER related API actions
@@ -30,8 +31,9 @@ class User(Resource):
         :return:
         """
         try:
+            self.logger.debug('Request came in with the following parameters: {}'.format(request.json))
             response = create_user(request.json)
-            self.logger.debug(response)
+            self.logger.debug('Response for the request: {}'.format(response))
 
             if not response:
                 return {'message': 'No response'}
@@ -39,4 +41,4 @@ class User(Resource):
             return {'message': err}
 
         del response['user']['password']
-        return {"message": "User was successfully retrieved", "data": response}, HTTPStatus.OK
+        return {"message": "User was successfully retrieved", "data": response}, HTTPStatus.CREATED

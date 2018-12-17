@@ -9,10 +9,10 @@ pylint = "*"
 
 [packages]
 grpcio = "*"
-grpcio-tools = "*"
 flask = "*"
 flask-restplus = "*"
 protobuf = "*"
+logger-crud = "*"
 protobuf-deps = "*"
 
 [requires]
