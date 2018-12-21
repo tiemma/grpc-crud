@@ -18,6 +18,8 @@ exportProtobuf () {
         --grpc_python_out=$DESTDIR \
         $PROTO_FILE;
 
+    echo "Conversion happened successfully"
+
 }
 
 if [[ -z "$1" ]]; then
