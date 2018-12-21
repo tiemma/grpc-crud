@@ -1,4 +1,6 @@
 
+from pickle import dumps
+
 from confluent_kafka import Producer, KafkaError
 from logger import Logger
 
@@ -33,7 +35,7 @@ class KafkaProducer:
             self.producer.poll(0)
 
             self.producer.produce(topic=topic,
-                                  value=data.encode('utf-8'),
+                                  value=dumps(data),
                                   callback=delivery_report)
 
             self.producer.flush()
@@ -45,4 +47,4 @@ class KafkaProducer:
 
 
 if __name__ == "__main__":
-    print(KafkaProducer().produce("users", "Hello b"))
+    print(KafkaProducer().produce("users", KafkaProducerConfig()))

@@ -1,0 +1,15 @@
+syntax="proto3";
+
+import "proto/Helpers.proto";
+import "proto/User.proto";
+import "proto/Comment.proto";
+
+message Events{
+    UUID id = 1;
+    EventType event_type = 2;
+    oneof event_body {
+        UserResponse user_response = 3;
+        CommentResponse comment_response = 4;
+    }
+}
+
