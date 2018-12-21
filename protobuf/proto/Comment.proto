@@ -3,7 +3,7 @@ syntax = "proto3";
 import "proto/Helpers.proto";
 
 message Comment{
-    UUID userId = 1;
+    UUID user_id = 1;
     string header = 2;
     string content = 3;
 }

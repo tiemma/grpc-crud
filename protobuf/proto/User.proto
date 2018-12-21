@@ -11,12 +11,12 @@ message User{
 
 message UserResponse{
     User user = 1;
-    UserStatus userStatus = 2;
-    UUID userId= 3;
+    UserStatus user_status = 2;
+    UUID user_id= 3;
     string token=4;
-    Timestamp createdAt = 5;
-    Timestamp updatedAt = 6;
-    bool isVerified = 7;
+    Timestamp created_at = 5;
+    Timestamp updated_at = 6;
+    bool is_verified = 7;
 }
 
 service CreateUserService{

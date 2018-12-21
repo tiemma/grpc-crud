@@ -6,11 +6,21 @@ message UUID{
 }
 
 message Timestamp{
-    string timeStamp = 1;
+    string time_stamp = 1;
 }
 
 enum UserStatus{
-    DEFAULT=0;
+    //    DEFAULT=0;
+    USER=0;
     EDITOR=1;
     ADMIN=2;
+}
+
+
+enum EventType{
+    //    DEFAULT = 0; //Not sure what I'd use it for tho
+    CREATED = 0;
+    UPDATED = 1;
+    DELETED = 2;
+    PUBLISHED = 3; //Would be used to declare events for notifications
 }
