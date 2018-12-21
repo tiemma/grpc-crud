@@ -10,7 +10,7 @@ from logger import Logger
 from proto.helpers import create_timestamp, create_user_service, default_port
 from proto.User_pb2_grpc import CreateUserServiceServicer
 from proto.User_pb2 import User, UserResponse
-from proto.Helpers_pb2 import Timestamp, UUID, UserStatus
+from proto.Helpers_pb2 import Timestamp, UUID, USER
 
 
 class UserService(CreateUserServiceServicer):
@@ -32,20 +32,20 @@ class UserService(CreateUserServiceServicer):
         user = User(name=request.name,
                     email=request.email,
                     password=encr_password)
-        created_at = Timestamp(timeStamp=create_timestamp())
-        updated_at = Timestamp(timeStamp=create_timestamp())
+        created_at = Timestamp(time_stamp=create_timestamp())
+        updated_at = Timestamp(time_stamp=create_timestamp())
         user_id = UUID(id=str(uuid1()))
-        user_status = UserStatus.Value(UserStatus.Name(0))
+        user_status = USER
         is_verified = False
         token = str(uuid4())
         self.logger.debug('User response object successfully created')
         return UserResponse(user=user,
-                            userStatus=user_status,
-                            userId=user_id,
+                            user_status=user_status,
+                            user_id=user_id,
                             token=token,
-                            createdAt=created_at,
-                            updatedAt=updated_at,
-                            isVerified=is_verified)
+                            created_at=created_at,
+                            updated_at=updated_at,
+                            is_verified=is_verified)
 
 
 def serve():
@@ -59,7 +59,7 @@ def serve():
 
     server.start()
 
-    Logger.get_logger(__file__).debug("Server started successfully on port {}".format(getenv('PORT', default_port)))
+    Logger.get_logger(__name__).debug("Server started successfully on port {}".format(getenv('PORT', default_port)))
 
     try:
         while True:
