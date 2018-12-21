@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x13proto/Helpers.proto\"\x12\n\x04UUID\x12\n\n\x02id\x18\x01 \x01(\t\"\x1e\n\tTimestamp\x12\x11\n\ttimeStamp\x18\x01 \x01(\t*0\n\nUserStatus\x12\x0b\n\x07\x44\x45\x46\x41ULT\x10\x00\x12\n\n\x06\x45\x44ITOR\x10\x01\x12\t\n\x05\x41\x44MIN\x10\x02\x62\x06proto3')
+  serialized_pb=_b('\n\x13proto/Helpers.proto\"\x12\n\x04UUID\x12\n\n\x02id\x18\x01 \x01(\t\"\x1f\n\tTimestamp\x12\x12\n\ntime_stamp\x18\x01 \x01(\t*-\n\nUserStatus\x12\x08\n\x04USER\x10\x00\x12\n\n\x06\x45\x44ITOR\x10\x01\x12\t\n\x05\x41\x44MIN\x10\x02*A\n\tEventType\x12\x0b\n\x07\x43REATED\x10\x00\x12\x0b\n\x07UPDATED\x10\x01\x12\x0b\n\x07\x44\x45LETED\x10\x02\x12\r\n\tPUBLISHED\x10\x03\x62\x06proto3')
 )
 
 _USERSTATUS = _descriptor.EnumDescriptor(
@@ -30,7 +30,7 @@ _USERSTATUS = _descriptor.EnumDescriptor(
   file=DESCRIPTOR,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='DEFAULT', index=0, number=0,
+      name='USER', index=0, number=0,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
@@ -44,15 +44,50 @@ _USERSTATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=75,
-  serialized_end=123,
+  serialized_start=76,
+  serialized_end=121,
 )
 _sym_db.RegisterEnumDescriptor(_USERSTATUS)
 
 UserStatus = enum_type_wrapper.EnumTypeWrapper(_USERSTATUS)
-DEFAULT = 0
+_EVENTTYPE = _descriptor.EnumDescriptor(
+  name='EventType',
+  full_name='EventType',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='CREATED', index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='UPDATED', index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='DELETED', index=2, number=2,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='PUBLISHED', index=3, number=3,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=123,
+  serialized_end=188,
+)
+_sym_db.RegisterEnumDescriptor(_EVENTTYPE)
+
+EventType = enum_type_wrapper.EnumTypeWrapper(_EVENTTYPE)
+USER = 0
 EDITOR = 1
 ADMIN = 2
+CREATED = 0
+UPDATED = 1
+DELETED = 2
+PUBLISHED = 3
 
 
 
@@ -95,7 +130,7 @@ _TIMESTAMP = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='timeStamp', full_name='Timestamp.timeStamp', index=0,
+      name='time_stamp', full_name='Timestamp.time_stamp', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -114,12 +149,13 @@ _TIMESTAMP = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=43,
-  serialized_end=73,
+  serialized_end=74,
 )
 
 DESCRIPTOR.message_types_by_name['UUID'] = _UUID
 DESCRIPTOR.message_types_by_name['Timestamp'] = _TIMESTAMP
 DESCRIPTOR.enum_types_by_name['UserStatus'] = _USERSTATUS
+DESCRIPTOR.enum_types_by_name['EventType'] = _EVENTTYPE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 UUID = _reflection.GeneratedProtocolMessageType('UUID', (_message.Message,), dict(

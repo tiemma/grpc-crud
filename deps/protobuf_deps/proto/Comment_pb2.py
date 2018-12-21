@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x13proto/Comment.proto\x1a\x13proto/Helpers.proto\"A\n\x07\x43omment\x12\x15\n\x06userId\x18\x01 \x01(\x0b\x32\x05.UUID\x12\x0e\n\x06header\x18\x02 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x03 \x01(\t\"\x7f\n\x0f\x43ommentResponse\x12\x11\n\x02id\x18\x01 \x01(\x0b\x32\x05.UUID\x12\x19\n\x07\x63omment\x18\x02 \x01(\x0b\x32\x08.Comment\x12\x1e\n\ncreated_at\x18\x03 \x01(\x0b\x32\n.Timestamp\x12\x1e\n\nupdated_at\x18\x04 \x01(\x0b\x32\n.Timestamp2<\n\rCreateComment\x12+\n\rCreateComment\x12\x08.Comment\x1a\x10.CommentResponseb\x06proto3')
+  serialized_pb=_b('\n\x13proto/Comment.proto\x1a\x13proto/Helpers.proto\"B\n\x07\x43omment\x12\x16\n\x07user_id\x18\x01 \x01(\x0b\x32\x05.UUID\x12\x0e\n\x06header\x18\x02 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x03 \x01(\t\"\x7f\n\x0f\x43ommentResponse\x12\x11\n\x02id\x18\x01 \x01(\x0b\x32\x05.UUID\x12\x19\n\x07\x63omment\x18\x02 \x01(\x0b\x32\x08.Comment\x12\x1e\n\ncreated_at\x18\x03 \x01(\x0b\x32\n.Timestamp\x12\x1e\n\nupdated_at\x18\x04 \x01(\x0b\x32\n.Timestamp2<\n\rCreateComment\x12+\n\rCreateComment\x12\x08.Comment\x1a\x10.CommentResponseb\x06proto3')
   ,
   dependencies=[proto_dot_Helpers__pb2.DESCRIPTOR,])
 
@@ -35,7 +35,7 @@ _COMMENT = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='userId', full_name='Comment.userId', index=0,
+      name='user_id', full_name='Comment.user_id', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -68,7 +68,7 @@ _COMMENT = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=44,
-  serialized_end=109,
+  serialized_end=110,
 )
 
 
@@ -119,11 +119,11 @@ _COMMENTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=111,
-  serialized_end=238,
+  serialized_start=112,
+  serialized_end=239,
 )
 
-_COMMENT.fields_by_name['userId'].message_type = proto_dot_Helpers__pb2._UUID
+_COMMENT.fields_by_name['user_id'].message_type = proto_dot_Helpers__pb2._UUID
 _COMMENTRESPONSE.fields_by_name['id'].message_type = proto_dot_Helpers__pb2._UUID
 _COMMENTRESPONSE.fields_by_name['comment'].message_type = _COMMENT
 _COMMENTRESPONSE.fields_by_name['created_at'].message_type = proto_dot_Helpers__pb2._TIMESTAMP
@@ -154,8 +154,8 @@ _CREATECOMMENT = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=240,
-  serialized_end=300,
+  serialized_start=241,
+  serialized_end=301,
   methods=[
   _descriptor.MethodDescriptor(
     name='CreateComment',

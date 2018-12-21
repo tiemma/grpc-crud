@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x10proto/User.proto\x1a\x13proto/Helpers.proto\"L\n\x04User\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x12\n\x08password\x18\x03 \x01(\tH\x00\x42\x13\n\x11optional_password\"\xbc\x01\n\x0cUserResponse\x12\x13\n\x04user\x18\x01 \x01(\x0b\x32\x05.User\x12\x1f\n\nuserStatus\x18\x02 \x01(\x0e\x32\x0b.UserStatus\x12\x15\n\x06userId\x18\x03 \x01(\x0b\x32\x05.UUID\x12\r\n\x05token\x18\x04 \x01(\t\x12\x1d\n\tcreatedAt\x18\x05 \x01(\x0b\x32\n.Timestamp\x12\x1d\n\tupdatedAt\x18\x06 \x01(\x0b\x32\n.Timestamp\x12\x12\n\nisVerified\x18\x07 \x01(\x08\x32\x37\n\x11\x43reateUserService\x12\"\n\nCreateUser\x12\x05.User\x1a\r.UserResponse2X\n\x0f\x46indUserService\x12 \n\x08\x46indUser\x12\x05.User\x1a\r.UserResponse\x12#\n\tFindUsers\x12\x05.User\x1a\r.UserResponse0\x01\x62\x06proto3')
+  serialized_pb=_b('\n\x10proto/User.proto\x1a\x13proto/Helpers.proto\"L\n\x04User\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x12\n\x08password\x18\x03 \x01(\tH\x00\x42\x13\n\x11optional_password\"\xc1\x01\n\x0cUserResponse\x12\x13\n\x04user\x18\x01 \x01(\x0b\x32\x05.User\x12 \n\x0buser_status\x18\x02 \x01(\x0e\x32\x0b.UserStatus\x12\x16\n\x07user_id\x18\x03 \x01(\x0b\x32\x05.UUID\x12\r\n\x05token\x18\x04 \x01(\t\x12\x1e\n\ncreated_at\x18\x05 \x01(\x0b\x32\n.Timestamp\x12\x1e\n\nupdated_at\x18\x06 \x01(\x0b\x32\n.Timestamp\x12\x13\n\x0bis_verified\x18\x07 \x01(\x08\x32\x37\n\x11\x43reateUserService\x12\"\n\nCreateUser\x12\x05.User\x1a\r.UserResponse2X\n\x0f\x46indUserService\x12 \n\x08\x46indUser\x12\x05.User\x1a\r.UserResponse\x12#\n\tFindUsers\x12\x05.User\x1a\r.UserResponse0\x01\x62\x06proto3')
   ,
   dependencies=[proto_dot_Helpers__pb2.DESCRIPTOR,])
 
@@ -90,14 +90,14 @@ _USERRESPONSE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='userStatus', full_name='UserResponse.userStatus', index=1,
+      name='user_status', full_name='UserResponse.user_status', index=1,
       number=2, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='userId', full_name='UserResponse.userId', index=2,
+      name='user_id', full_name='UserResponse.user_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -111,21 +111,21 @@ _USERRESPONSE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='createdAt', full_name='UserResponse.createdAt', index=4,
+      name='created_at', full_name='UserResponse.created_at', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='updatedAt', full_name='UserResponse.updatedAt', index=5,
+      name='updated_at', full_name='UserResponse.updated_at', index=5,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='isVerified', full_name='UserResponse.isVerified', index=6,
+      name='is_verified', full_name='UserResponse.is_verified', index=6,
       number=7, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
@@ -144,17 +144,17 @@ _USERRESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=120,
-  serialized_end=308,
+  serialized_end=313,
 )
 
 _USER.oneofs_by_name['optional_password'].fields.append(
   _USER.fields_by_name['password'])
 _USER.fields_by_name['password'].containing_oneof = _USER.oneofs_by_name['optional_password']
 _USERRESPONSE.fields_by_name['user'].message_type = _USER
-_USERRESPONSE.fields_by_name['userStatus'].enum_type = proto_dot_Helpers__pb2._USERSTATUS
-_USERRESPONSE.fields_by_name['userId'].message_type = proto_dot_Helpers__pb2._UUID
-_USERRESPONSE.fields_by_name['createdAt'].message_type = proto_dot_Helpers__pb2._TIMESTAMP
-_USERRESPONSE.fields_by_name['updatedAt'].message_type = proto_dot_Helpers__pb2._TIMESTAMP
+_USERRESPONSE.fields_by_name['user_status'].enum_type = proto_dot_Helpers__pb2._USERSTATUS
+_USERRESPONSE.fields_by_name['user_id'].message_type = proto_dot_Helpers__pb2._UUID
+_USERRESPONSE.fields_by_name['created_at'].message_type = proto_dot_Helpers__pb2._TIMESTAMP
+_USERRESPONSE.fields_by_name['updated_at'].message_type = proto_dot_Helpers__pb2._TIMESTAMP
 DESCRIPTOR.message_types_by_name['User'] = _USER
 DESCRIPTOR.message_types_by_name['UserResponse'] = _USERRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -181,8 +181,8 @@ _CREATEUSERSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=310,
-  serialized_end=365,
+  serialized_start=315,
+  serialized_end=370,
   methods=[
   _descriptor.MethodDescriptor(
     name='CreateUser',
@@ -205,8 +205,8 @@ _FINDUSERSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=1,
   serialized_options=None,
-  serialized_start=367,
-  serialized_end=455,
+  serialized_start=372,
+  serialized_end=460,
   methods=[
   _descriptor.MethodDescriptor(
     name='FindUser',
