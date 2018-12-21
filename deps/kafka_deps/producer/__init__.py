@@ -18,24 +18,26 @@ class KafkaProducer:
 
     def __init__(self):
         config = get_config(KafkaProducerConfig())
-        self.logger.debug(config)
+        self.logger.debug('Configuration for producer instance: %r', config)
         self.producer = Producer(config)
 
-    def produce(self, topic, data):
+    def produce(self, topic, data, key=None):
 
         def delivery_report(err, msg):
             """ Called once for each message produced to indicate delivery result.
                 Triggered by poll() or flush(). """
             if err is not None:
-                self.logger.debug('Message delivery failed: {}'.format(err))
+                self.logger.debug('Message delivery failed: %r', err)
             else:
-                self.logger.debug('Message delivered to {} [{}]'.format(msg.topic(), msg.partition()))
+                self.logger.debug('Message delivered to %s on partition [%s]', msg.topic(), msg.partition())
 
         try:
             self.producer.poll(0)
 
             self.producer.produce(topic=topic,
+                                  # Dumping data with pickle as we can also publish binary data
                                   value=dumps(data),
+                                  key=key,
                                   callback=delivery_report)
 
             self.producer.flush()
@@ -44,6 +46,9 @@ class KafkaProducer:
             self.logger.error(
                 "Error occurred while sending data %r to topic %r due to error %r",
                 data, topic, e)
+
+    def __del__(self):
+        self.logger.info("Producer with group ID %s is shutting down", self.config['group.id'])
 
 
 if __name__ == "__main__":
