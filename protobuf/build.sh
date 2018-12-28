@@ -2,7 +2,7 @@
 
 exportProtobuf () {
 
-    DESTDIR=$(pwd)/../deps/protobuf_deps/;
+    DESTDIR=$(pwd)/../deps/protobuf/;
     mkdir -p $DESTDIR;
 
     #Extra proto directory was added so that it generates the right package import after compilation

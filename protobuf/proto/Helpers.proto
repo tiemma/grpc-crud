@@ -24,3 +24,9 @@ enum EventType{
     DELETED = 2;
     PUBLISHED = 3; //Would be used to declare events for notifications
 }
+
+enum EventState{
+    UNPROCESSED = 0;
+    PROCESSED = 1;
+    ERROR_WHILE_PROCESSING = 2;
+}
