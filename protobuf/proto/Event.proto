@@ -4,7 +4,7 @@ import "proto/Helpers.proto";
 import "proto/User.proto";
 import "proto/Comment.proto";
 
-message Events{
+message Event{
     UUID id = 1;
     EventType event_type = 2;
     oneof event_body {
@@ -13,3 +13,12 @@ message Events{
     }
 }
 
+message EventResponse{
+    Event event = 1;
+    Timestamp time_stamp = 2;
+    EventState event_state = 3; // Error, unprocessed or no error
+}
+
+service CreateEventService{
+    rpc CreateEvent(Event) returns (EventResponse);
+}

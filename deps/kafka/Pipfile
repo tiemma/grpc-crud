@@ -6,9 +6,9 @@ name = "pypi"
 [dev-packages]
 
 [packages]
-kafka-python = "1.4.4"
 logger-crud = "*"
 confluent-kafka = "==0.11.6"
+protobuf-deps = "*"
 
 [requires]
 python_version = "3.5"

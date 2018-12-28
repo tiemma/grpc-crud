@@ -10,6 +10,11 @@ setup(name='kafka_deps',
       author_email='emmanueltimmy98@gmail.com',
       license='MIT',
       packages=find_packages(),
-      package_data={'.': ['.env']},
+      install_requires=[
+            'confluent-kafka',
+            'logger-crud',
+            'protobuf-deps'
+      ],
+      package_data={'kafka_deps': ['.env']},
       include_package_data=True,
       zip_safe=False)

@@ -5,14 +5,14 @@ Implementation for logger services
 
 from logging import handlers, Formatter, StreamHandler, getLogger, DEBUG
 
-from os import getcwd, makedirs
+from os import getcwd, makedirs, getenv
 from os.path import exists
 
 from sys import stdout
 
 FORMATTER = Formatter("%(asctime)s — %(name)s — %(levelname)s — %(message)s")
 
-LOG_DIRECTORY = "{current_working_dir}/logs".format(current_working_dir=getcwd())
+LOG_DIRECTORY = "{current_working_dir}/logs".format(current_working_dir=getenv('LOG_DIR', getcwd()))
 
 LOG_FILE = "{log_directory}/App.log".format(log_directory=LOG_DIRECTORY)
 

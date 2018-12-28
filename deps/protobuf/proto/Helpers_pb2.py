@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x13proto/Helpers.proto\"\x12\n\x04UUID\x12\n\n\x02id\x18\x01 \x01(\t\"\x1f\n\tTimestamp\x12\x12\n\ntime_stamp\x18\x01 \x01(\t*-\n\nUserStatus\x12\x08\n\x04USER\x10\x00\x12\n\n\x06\x45\x44ITOR\x10\x01\x12\t\n\x05\x41\x44MIN\x10\x02*A\n\tEventType\x12\x0b\n\x07\x43REATED\x10\x00\x12\x0b\n\x07UPDATED\x10\x01\x12\x0b\n\x07\x44\x45LETED\x10\x02\x12\r\n\tPUBLISHED\x10\x03\x62\x06proto3')
+  serialized_pb=_b('\n\x13proto/Helpers.proto\"\x12\n\x04UUID\x12\n\n\x02id\x18\x01 \x01(\t\"\x1f\n\tTimestamp\x12\x12\n\ntime_stamp\x18\x01 \x01(\t*-\n\nUserStatus\x12\x08\n\x04USER\x10\x00\x12\n\n\x06\x45\x44ITOR\x10\x01\x12\t\n\x05\x41\x44MIN\x10\x02*A\n\tEventType\x12\x0b\n\x07\x43REATED\x10\x00\x12\x0b\n\x07UPDATED\x10\x01\x12\x0b\n\x07\x44\x45LETED\x10\x02\x12\r\n\tPUBLISHED\x10\x03*H\n\nEventState\x12\x0f\n\x0bUNPROCESSED\x10\x00\x12\r\n\tPROCESSED\x10\x01\x12\x1a\n\x16\x45RROR_WHILE_PROCESSING\x10\x02\x62\x06proto3')
 )
 
 _USERSTATUS = _descriptor.EnumDescriptor(
@@ -81,6 +81,33 @@ _EVENTTYPE = _descriptor.EnumDescriptor(
 _sym_db.RegisterEnumDescriptor(_EVENTTYPE)
 
 EventType = enum_type_wrapper.EnumTypeWrapper(_EVENTTYPE)
+_EVENTSTATE = _descriptor.EnumDescriptor(
+  name='EventState',
+  full_name='EventState',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='UNPROCESSED', index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='PROCESSED', index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='ERROR_WHILE_PROCESSING', index=2, number=2,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=190,
+  serialized_end=262,
+)
+_sym_db.RegisterEnumDescriptor(_EVENTSTATE)
+
+EventState = enum_type_wrapper.EnumTypeWrapper(_EVENTSTATE)
 USER = 0
 EDITOR = 1
 ADMIN = 2
@@ -88,6 +115,9 @@ CREATED = 0
 UPDATED = 1
 DELETED = 2
 PUBLISHED = 3
+UNPROCESSED = 0
+PROCESSED = 1
+ERROR_WHILE_PROCESSING = 2
 
 
 
@@ -156,6 +186,7 @@ DESCRIPTOR.message_types_by_name['UUID'] = _UUID
 DESCRIPTOR.message_types_by_name['Timestamp'] = _TIMESTAMP
 DESCRIPTOR.enum_types_by_name['UserStatus'] = _USERSTATUS
 DESCRIPTOR.enum_types_by_name['EventType'] = _EVENTTYPE
+DESCRIPTOR.enum_types_by_name['EventState'] = _EVENTSTATE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 UUID = _reflection.GeneratedProtocolMessageType('UUID', (_message.Message,), dict(

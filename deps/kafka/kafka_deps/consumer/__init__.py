@@ -3,19 +3,15 @@
 from pickle import loads
 
 from confluent_kafka import Consumer
-
-from os.path import abspath
-from sys import path
-lib_path = abspath('..')
-path.insert(0, lib_path)
-
-from config import KafkaConsumerConfig, get_config
 from logger import Logger
 
-from time import sleep
+from kafka_deps.config import KafkaConsumerConfig, get_config
 
 
 class KafkaConsumer:
+    """
+    Kafka Consumer class defining functions for subscribing to topic data publishing
+    """
 
     logger = Logger.get_logger(__name__)
 
@@ -25,7 +21,10 @@ class KafkaConsumer:
         self.consumer = Consumer(self.config)
 
     def subscribe(self, topics):
+        """
 
+        :param topics:
+        """
         self.consumer.subscribe(topics.split(','))
 
         while True:
@@ -49,6 +48,5 @@ class KafkaConsumer:
 
 
 if __name__ == "__main__":
-    consumer = KafkaConsumer()
-    for i in consumer.subscribe("users"):
+    for i in KafkaConsumer().subscribe("users"):
         print(i)
