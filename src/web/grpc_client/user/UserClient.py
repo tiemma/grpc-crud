@@ -5,6 +5,8 @@ from typing import Dict
 from grpc import channel_ready_future, FutureTimeoutError, RpcError
 from google.protobuf.json_format import MessageToDict
 
+from logger import Logger
+
 from proto.helpers import create_channel
 from proto.User_pb2_grpc import CreateUserServiceStub
 from proto.User_pb2 import User
@@ -12,6 +14,7 @@ from proto.User_pb2 import User
 
 def create_user(request: Dict):
     channel = create_channel()
+    log = Logger.get_logger(__name__)
 
     try:
         channel_ready_future(channel).result(timeout=getenv('TIMEOUT', 10))
@@ -27,7 +30,7 @@ def create_user(request: Dict):
                 metadata=metadata,
             )
         except RpcError as e:
-            print('CreateUser failed with {0}: {1}'.format(e.code(), e.details()))
+            log.debug('CreateUser failed with %r: %r', e.code(), e.details())
         else:
-            return MessageToDict(response)
+            return MessageToDict(response, including_default_value_fields=True)
 

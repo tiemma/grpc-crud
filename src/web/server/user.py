@@ -3,6 +3,7 @@ from flask_restplus import Namespace, Resource, fields
 from flask_restplus._http import HTTPStatus
 
 from grpc_client.user.UserClient import create_user
+from kafka_deps.producer import KafkaProducer
 
 from logger import Logger
 
@@ -24,6 +25,7 @@ class User(Resource):
     User resource class for defining USER related API actions
     """
     logger = Logger.get_logger(__name__)
+    topic = "users"
 
     @USER_NS.expect(USER, validate=True)
     def post(self):
@@ -41,4 +43,5 @@ class User(Resource):
             return {'message': err}
 
         del response['user']['password']
+        KafkaProducer().produce(topic=self.topic, data=response, key=response['userId']['id'])
         return {"message": "User was successfully retrieved", "data": response}, HTTPStatus.CREATED

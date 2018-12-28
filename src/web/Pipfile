@@ -14,6 +14,7 @@ flask-restplus = "*"
 protobuf = "*"
 logger-crud = "*"
 protobuf-deps = "*"
+kafka-deps = "*"
 
 [requires]
 python_version = "3.5"
