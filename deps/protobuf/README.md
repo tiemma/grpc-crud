@@ -47,7 +47,7 @@ pip install passlib
 
 We can create the .htaccess using the following command:
 ```bash
-htpasswd -sc ~/packages/.htaccess <SOME_USERNAME>
+htpasswd -sc -b ~/packages/.htaccess <SOME_USERNAME> <SOME_PASSWORD>
 ```
 
 After this, we're not done. We still need to configure our internal server.

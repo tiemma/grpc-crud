@@ -7,8 +7,12 @@ else
     cd $1
 fi
 
+# Configure authentication for the pypi server, if needed!
+export TWINE_USERNAME=pypi
+export TWINE_PASSWORD=password
+
 rm -rf dist build */*.egg-info *.egg-info
 
 python setup.py sdist bdist_wheel
 
-twine upload -r internal dist/*
+twine upload --repository-url http://localhost:8080 dist/*

@@ -4,7 +4,7 @@ __VERSION__ = '0.12'
 
 setup(name='logger_crud',
       version=__VERSION__,
-      description='Logger implementation featuring rotation and console logging [INTERNAL]',
+      description='Logger implementation featuring rotation and console loggers [INTERNAL]',
       url='https://github.com/Tiemma/grpc-crud',
       author='Bakare Emmanuel',
       author_email='emmanueltimmy98@gmail.com',

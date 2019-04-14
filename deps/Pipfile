@@ -4,9 +4,9 @@ verify_ssl = true
 name = "pypi"
 
 [dev-packages]
-twine = "*"
 
 [packages]
+twine = "*"
 
 [requires]
 python_version = "3.5"

@@ -13,7 +13,7 @@ setup(name='kafka_deps',
       install_requires=[
             'confluent-kafka',
             'logger-crud',
-            'protobuf-deps'
+            'protobuf-config'
       ],
       package_data={'kafka_deps': ['.env']},
       include_package_data=True,

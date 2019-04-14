@@ -3,7 +3,7 @@ from subprocess import call
 from os import getcwd, listdir
 
 
-proto_directory = '{}/../deps/protobuf_deps/proto'.format(getcwd())
+proto_directory = '{}/../config/protobuf_deps/proto'.format(getcwd())
 
 
 def get_proto_files():
