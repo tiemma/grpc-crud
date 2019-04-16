@@ -44,7 +44,7 @@ pip install --extra-index-url http://localhost:8080/ <PACKAGE>
 You can use the command likewise
 
 ```bash
-# Environment configuration if authentication is enabled, disabled currently
+# Environment configuration if authentication is enabled, enabled by default currently
 export TWINE_USERNAME=pypi
 export TWINE_PASSWORD=password
 twine upload --repository-url http://localhost:8080 dist/* 
