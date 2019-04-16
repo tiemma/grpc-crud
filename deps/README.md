@@ -12,7 +12,7 @@ and distribute them using their various package names and  version numbers.
 I'm running a local PyPi server using
 [pypiserver](https://pypiserver.readthedocs.io/en/latest/).
 This allows me to publish all my dependencies internally and manage them without
-suffering over multiple deploying over to pypi or managing multiple package layers
+suffering over multiple deployments over to pypi or managing multiple package layers
 which can be quite stressful in python.
 
 
@@ -151,11 +151,17 @@ ls ~/packages/
 ```
 
 
+# Docker Version
+ - Todo section has been im
+
 ## TODO:
- - Create a docker image which would create the perfect environment
-    - It would install and run the pypiserver
-    - It would add the .pypirc and mount it on the local system using a volume
-    - It can build the dist and wheel and publish using a compose command
+&#x2611; - Create a docker image which would create the perfect environment
+
+&#x2611; - It would install and run the pypiserver
+
+- It would add the .pypirc and mount it on the local system using a volume
+    
+- It can build the dist and wheel and publish using a compose command
 
 
 
