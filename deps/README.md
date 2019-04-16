@@ -152,7 +152,7 @@ ls ~/packages/
 
 
 # Docker Version
- - Todo section has been im
+ - Todo section has been implemented, dev server for the pypi repository can be found in the [dev-server](dev-server) folder
 
 ## TODO:
 &#x2611; - Create a docker image which would create the perfect environment
