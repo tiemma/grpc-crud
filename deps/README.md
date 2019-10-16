@@ -12,7 +12,7 @@ and distribute them using their various package names and  version numbers.
 I'm running a local PyPi server using
 [pypiserver](https://pypiserver.readthedocs.io/en/latest/).
 This allows me to publish all my dependencies internally and manage them without
-suffering over multiple deployments over to pypi or managing multiple package layers
+suffering over publishing multiple packages over to pypi or managing multiple package layers
 which can be quite stressful in python.
 
 
